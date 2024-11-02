@@ -24,7 +24,7 @@ const Contact = () => {
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <textarea placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} required />
-        {error && <p>{error}</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit">Send</button>
       </form>
     </section>
