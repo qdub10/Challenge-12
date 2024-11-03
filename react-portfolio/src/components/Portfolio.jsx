@@ -3,12 +3,9 @@ import React from 'react';
 import Project from './Project';
 
 const projects = [
-  { title: 'Project 1', deployedLink: '#', githubLink: '#' },
-  { title: 'Project 2', deployedLink: '#', githubLink: '#' },
-  { title: 'Project 3', deployedLink: '#', githubLink: '#' },
-  { title: 'Project 4', deployedLink: '#', githubLink: '#' },
-  { title: 'Project 5', deployedLink: '#', githubLink: '#' },
-  { title: 'Project 6', deployedLink: '#', githubLink: '#' },
+  { title: 'Contract Tracking', deployedLink: 'https://eslickjr.github.io/Bankroll/', githubLink: 'https://github.com/eslickjr/Bankroll', image: 'src/assets/Screenshot 2024-11-03 183332.png' },
+  
+
 ];
 
 const Portfolio = () => {

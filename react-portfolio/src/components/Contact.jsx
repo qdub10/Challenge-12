@@ -7,10 +7,11 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [touched, setTouched] = useState({ name: false, email: false, message: false }); // Track field focus
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Reset error and success messages
     setError('');
     setSuccess('');
@@ -38,6 +39,11 @@ const Contact = () => {
     setName('');
     setEmail('');
     setMessage('');
+    setTouched({ name: false, email: false, message: false }); // Reset touched states
+  };
+
+  const handleBlur = (field) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
   };
 
   return (
@@ -49,21 +55,27 @@ const Contact = () => {
           placeholder="Name" 
           value={name} 
           onChange={(e) => setName(e.target.value)} 
-          required 
+          onBlur={() => handleBlur('name')} 
         />
+        {touched.name && !name && <p style={{ color: 'red' }}>This field is required.</p>}
+
         <input 
           type="email" 
           placeholder="Email" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
-          required 
+          onBlur={() => handleBlur('email')} 
         />
+        {touched.email && !email && <p style={{ color: 'red' }}>This field is required.</p>}
+
         <textarea 
           placeholder="Message" 
           value={message} 
           onChange={(e) => setMessage(e.target.value)} 
-          required 
+          onBlur={() => handleBlur('message')} 
         />
+        {touched.message && !message && <p style={{ color: 'red' }}>This field is required.</p>}
+
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {success && <p style={{ color: 'green' }}>{success}</p>}
         <button type="submit">Send</button>
